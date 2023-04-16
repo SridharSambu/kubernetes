@@ -97,3 +97,6 @@ because you don't have infinite amount of money right just like the house has on
 so this is a very brief overview of kubernetes using a real world analogy there are plenty of
 other concepts that need to be covered as well but this should give you an decent starting point if you are an
 absolute beginner.
+
+
+https://opensource.com/article/20/7/kubernetes-analogy#:~:text=The%20contract%20between%20you%20(the,you%20need%2C%20and%20so%20on.
