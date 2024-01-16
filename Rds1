@@ -1,0 +1,49 @@
+--restore-to-point-in-time <timestamp>
+This combination allows you to restore the cluster to a specific timestamp. The timestamp should be in the format YYYY-MM-DDTHH:MM:SSZ.
+--restore-to-point-in-time <timestamp> --use-latest-restorable-time
+This combination restores the cluster to the nearest possible time to the specified timestamp. If the specified timestamp is not available, it will use the latest restorable time.
+--restore-to-point-in-time <timestamp> --restore-type <copy-on-write|full-copy>
+This combination allows you to specify the restore type along with the timestamp. You can choose between copy-on-write or full-copy. copy-on-write creates a new cluster with the data changes applied from the specified timestamp, while full-copy creates a new cluster with a copy of the entire database at the specified timestamp.
+ 
+ 
+ 
+ 
+--restore-type copy-on-write
+This combination restores the cluster using the copy-on-write method. It creates a new cluster with data changes applied from the specified restore point in time.
+--restore-type full-copy
+This combination restores the cluster using the full-copy method. It creates a new cluster with a copy of the entire database at the specified restore point in time.
+Note: The restore_type parameter is used in conjunction with the restore_to_point_in_time parameter to specify the restore behavior for the AWS RDS cluster. The exact valid combinations may vary depending on the AWS CLI or SDK version you are using. Please refer to the AWS documentation or the specific CLI/SDK version documentation for the accurate combinations.
+ 
+ 
+ 
+--restore-to-time <timestamp>
+This combination allows you to restore the cluster to a specific timestamp. The timestamp should be in the format YYYY-MM-DDTHH:MM:SSZ.
+--restore-to-time <timestamp> --use-latest-restorable-time
+This combination restores the cluster to the nearest possible time to the specified timestamp. If the specified timestamp is not available, it will use the latest restorable time.
+--restore-to-time <timestamp> --restore-type <copy-on-write|full-copy>
+This combination allows you to specify the restore type along with the timestamp. You can choose between copy-on-write or full-copy. copy-on-write creates a new cluster with the data changes applied from the specified timestamp, while full-copy creates a new cluster with a copy of the entire database at the specified timestamp.
+ 
+ 
+ 
+To specify the use of the latest restorable time for an AWS RDS cluster in Terraform, you can use the following valid combinations for the use_latest_restorable_time argument:
+use_latest_restorable_time = true
+This combination enables the use of the latest restorable time for the RDS cluster. Terraform will automatically select the latest available restore time for the cluster.
+use_latest_restorable_time = false
+This combination disables the use of the latest restorable time. You can specify a custom restore time using the restore_to_time argument.
+Note: The use_latest_restorable_time argument is used in conjunction with the restore_to_time argument to specify the restore behavior for the AWS RDS cluster in Terraform. Please refer to the Terraform documentation for the accurate usage and syntax based on the version you are using.
+ 
+ 
+ 
+ 
+ 
+n Terraform, the use_latest_restorable_time argument and the restore_type argument are not directly related to each other. However, you can use them in combination to achieve the desired restore behavior for an AWS RDS cluster. Here are the valid combinations:
+Using use_latest_restorable_time = true with restore_type = "copy-on-write":
+This combination enables the use of the latest restorable time for the RDS cluster and restores it using the copy-on-write method. Terraform will automatically select the latest available restore time, and the new cluster will contain data changes applied from that time.
+Using use_latest_restorable_time = true with restore_type = "full-copy":
+This combination enables the use of the latest restorable time for the RDS cluster and restores it using the full-copy method. Terraform will automatically select the latest available restore time, and the new cluster will be a complete copy of the database at that time.
+Using use_latest_restorable_time = false with restore_type = "copy-on-write" and specifying restore_to_time:
+This combination disables the use of the latest restorable time and allows you to specify a custom restore time using the restore_to_time argument. The cluster will be restored using the copy-on-write method with data changes applied from the specified restore time.
+Using use_latest_restorable_time = false with restore_type = "full-copy" and specifying restore_to_time:
+This combination disables the use of the latest restorable time and allows you to specify a custom restore time using the restore_to_time argument. The cluster will be restored using the full-copy method, creating a complete copy of the database at the specified restore time.
+ 
+ 
