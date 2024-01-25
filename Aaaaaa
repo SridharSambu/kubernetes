@@ -1,0 +1,19 @@
+Yes, the CodeDeploy agent service on an EC2 instance is designed to run continuously in the background. The agent is responsible for handling deployment operations and executing deployment scripts specified in your CodeDeploy deployment configuration.
+ 
+Once the CodeDeploy agent is installed and configured on an EC2 instance, it will start automatically and remain running, actively monitoring for deployment commands from the CodeDeploy service.
+ 
+The agent communicates with the CodeDeploy service to receive deployment instructions, download application revisions, and execute deployment scripts. It also sends status updates and logs back to the CodeDeploy service.
+ 
+The CodeDeploy agent service is designed to be lightweight and efficient, consuming minimal system resources while actively listening for deployment commands. It ensures that your EC2 instances are always ready to receive and process deployment requests from CodeDeploy.
+ 
+It's important to ensure that the CodeDeploy agent service is running and properly configured on your EC2 instances to enable successful deployments using AWS CodeDeploy.
+ 
+ 
+ 
+Active State: When the CodeDeploy agent is actively processing a deployment, it is considered to be in the active state. During this time, the agent performs actions such as retrieving deployment artifacts, executing deployment scripts, and reporting status updates to the CodeDeploy service. The agent remains active until the deployment process is completed or encounters an error.
+ 
+Inactive State: When there are no ongoing deployments or the instance is not part of any deployment group, the CodeDeploy agent may enter an inactive state. In this state, the agent is still installed and running on the instance, but it is not actively processing any deployments. It remains in standby, waiting for new deployment instructions from the CodeDeploy service.
+ 
+It's important to note that even in the inactive state, the CodeDeploy agent is still functional and ready to receive deployment commands when triggered. It continuously checks for deployment instructions and awaits new deployment requests from the CodeDeploy service.
+ 
+In summary, the CodeDeploy agent on an EC2 instance can be either active, processing a deployment, or inactive, waiting for new deployment instructions. The agent is designed to be lightweight and efficient, ensuring that it is always available to handle deployment activities when required.
